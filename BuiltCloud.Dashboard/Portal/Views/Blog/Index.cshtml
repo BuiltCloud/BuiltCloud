@@ -1,0 +1,285 @@
+﻿@model IEnumerable<Blog>
+@{
+    ViewData["Title"] = "List";
+    Layout = "_BlogLayout.cshtml";
+}
+<div class="blog-posts blog-common row">
+    <!-- articles left bar -->
+    <div class="col-md-8">
+        <!-- Post-1 -->
+        <article class="hentry post type-post sticky">
+            <header class="entry-head">
+                <h2 class="title"><a href="blog-single.html" rel="bookmark">@Model.First().Title</a></h2>
+                <div class="meta">
+                    <p>
+                        Posted by <span class="vcard author">admin</span> in
+                        <span class="category">print</span> on
+                        <time datetime="2014-04-28" class="pub-date">28<sup>th</sup> April 2014</time>
+                    </p>
+                </div>
+            </header>
+            <div class="entry-content">
+                <figure class="featured-image">
+                    <img src="~/img/blog/img-2.jpg" alt="image">
+                </figure>
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed in elit ut mauris iaculis elementum sit amet eu nulla. Sed elementum purus ut sodales consequat. Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales.</p>
+                    <a href="blog-single.html" class="more-btn">Read More</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Post-2 -->
+        <article class="hentry post type-post">
+            <header class="entry-head">
+                <h2 class="title"><a href="blog-single.html" rel="bookmark">Blog Post Without Images</a></h2>
+                <div class="meta">
+                    <p>
+                        Posted by <span class="vcard author">johnny</span> in
+                        <span class="category">web design</span> on
+                        <time datetime="2014-04-26" class="pub-date">26<sup>th</sup> April 2014</time>
+                    </p>
+                </div>
+            </header>
+
+            <div class="entry-content">
+                <div class="content">
+                    <p>Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales. Fugiat dapibus, tellus ac cursus commo.</p>
+                    <a href="blog-single.html" class="more-btn">Read More</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Post-3 -->
+        <article class="hentry post chat-post">
+            <header class="entry-head">
+                <h2 class="title"><a href="blog-single.html" rel="bookmark">Chat Post Format</a></h2>
+                <div class="meta">
+                    <p>
+                        Posted by <span class="vcard author">johnny</span> in
+                        <span class="category">conversation</span> on
+                        <time datetime="2014-04-24" class="pub-date">24<sup>th</sup> April 2014</time>
+                    </p>
+                </div>
+            </header>
+
+            <div class="entry-content">
+                <div class="content">
+                    <div class="chat-format">
+                        <!-- Row 1 -->
+                        <div class="chat-row">
+                            <span class="chat-author author-1">John<em>:</em></span>
+                            <p class="chat-desc">Hye, What are you doing?</p>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="chat-row">
+                            <span class="chat-author author-2">Julie<em>:</em></span>
+                            <p class="chat-desc">Nothing, just finished my wordpress design. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales. </p>
+                        </div>
+                        <!-- Row 3 -->
+                        <div class="chat-row">
+                            <span class="chat-author author-1">John<em>:</em></span>
+                            <p class="chat-desc">Ok, that's cool.</p>
+                        </div>
+                        <!-- Row 4 -->
+                        <div class="chat-row">
+                            <span class="chat-author author-3">Joe<em>:</em></span>
+                            <p class="chat-desc">Hey guys, will I join you?</p>
+                        </div>
+                    </div> <!-- .chat-format -->
+                </div>
+            </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="hentry post video-post">
+            <header class="entry-head">
+                <h2 class="title"><a href="blog-single.html" rel="bookmark">Embed video blog post</a></h2>
+                <div class="meta">
+                    <p>
+                        Posted by <span class="vcard author">johnny</span> in
+                        <span class="category">video</span> on
+                        <time datetime="2014-04-20" class="pub-date">20<sup>th</sup> April 2014</time>
+                    </p>
+                </div>
+            </header>
+
+            <div class="entry-content">
+                <div class="featured-video">
+                    <iframe src="//player.vimeo.com/video/66929245?title=0&amp;byline=0" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="video"></iframe>
+                </div>
+                <div class="content">
+                    <p>Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales. Fugiat dapibus, tellus ac cursus commo.</p>
+                    <a href="blog-single.html" class="more-btn">Read More</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- blog pagination -->
+        <div class="blog-pagination">
+            <div class="prev-btn text-uppercase">
+                <a href="#"><i class="elegant-eleganticons-2"></i>Older</a>
+            </div>
+            <!-- pagination -->
+            <ul class="pagination list-unstyled">
+                <li class="active"><a href="#na">1</a></li>
+                <li><a href="#na">2</a></li>
+                <li><a href="#na">3</a></li>
+                <li><a href="#na">4</a></li>
+                <li><a href="#na">5</a></li>
+            </ul>
+            <!-- #end pagination -->
+            <div class="next-btn text-uppercase">
+                <a href="#">Newer<i class="elegant-eleganticons-3"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- blog right bar -->
+    <div class="col-md-4 blog-sidebar">
+
+        <!-- search bar -->
+        <div class="search-bar mb30">
+            <form id="blog-search" name="blog-search" action="#">
+                <input class="form-control" type="text" placeholder="Enter keywords...">
+            </form>
+        </div>
+
+        <!-- bio -->
+        <div class="about-bio side-panel">
+            <h4 class="panel-title text-uppercase">About Me</h4>
+            <img src="~/img/author.jpg" class="bio-img">
+            <p class="desc">Hello, my name is <strong>John Doe</strong>. I am a computer science student. I love blogging and coding. You can find me on twitter also. Twitter id is <a href="#na">@@doejohn</a> psum mollis purpharetra eget leo.</p>
+        </div>
+
+        <!-- arhives panel -->
+        <div class="archives side-panel">
+            <h4 class="panel-title text-uppercase">Archives</h4>
+            <ul class="list-unstyled clearfix">
+                <li>
+                    <a href="#">Dec 2014</a>
+                    <ul class="list-unstyled clearfix nested-list">
+                        <li><a href="#">Item One</a></li>
+                        <li><a href="#">Item Two</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Sep 2014</a></li>
+                <li><a href="#">Aug 2014</a></li>
+                <li><a href="#">July 2014</a></li>
+                <li><a href="#">Sep 2013</a></li>
+            </ul>
+        </div>
+
+        <!-- category panel -->
+        <div class="categories side-panel">
+            <h4 class="panel-title text-uppercase">Categories</h4>
+            <ul class="list-unstyled clearfix list-group">
+                <li>
+                    <a href="#nested100" class="list-group-item" data-toggle="collapse">
+                        <i class="elegant-eleganticons-61"></i>Creativity
+                        <span class="badge badge-round badge-xs">3</span>
+                    </a>
+                    <!-- Nested -->
+                    <ul class="list-unstyled clearfix nested-list list-group collapse in" id="nested100">
+                        <li>
+                            <a href="#" class="list-group-item">
+                                <i class="elegant-eleganticons-61"></i>Item One
+                                <span class="badge badge-round badge-xs">1</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#nested101" class="list-group-item" data-toggle="collapse">
+                                <i class="elegant-eleganticons-61"></i>Item Two
+                            </a>
+                            <!-- deep nested -->
+                            <ul class="list-unstyled clearfix nested-list list-group collapse in" id="nested101">
+                                <li>
+                                    <a href="#" class="list-group-item">
+                                        <i class="elegant-eleganticons-61"></i>Deep Nested
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Animation
+                        <span class="badge badge-round badge-xs">10</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Wordpress
+                        <span class="badge badge-round badge-xs">13</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Photoshop
+                        <span class="badge badge-round badge-xs">7</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Technology
+                        <span class="badge badge-round badge-xs">5</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Recent Posts -->
+        <div class="recent-posts side-panel">
+            <h4 class="panel-title text-uppercase">Recent Posts</h4>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="#">
+                        <img src="~/img/blog/img-1.jpg">
+                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/img/blog/img-2.jpg">
+                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/img/blog/img-3.png">
+                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- tags -->
+        <div class="tags side-panel">
+            <h4 class="panel-title text-uppercase">Tags</h4>
+            <ul class="list-unstyled clearfix">
+                <li><a href="#">PHP</a></li>
+                <li><a href="#">Nature</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">Coding</a></li>
+                <li><a href="#">Backtesting</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Responsive</a></li>
+                <li><a href="#">Latest</a></li>
+                <li><a href="#">CSS3</a></li>
+            </ul>
+        </div>
+
+        <!-- selectbox -->
+        <div class="select-box">
+            <select placeholder="Select a person..." class="">
+                <option value="">Select a person...</option>
+                <option value="1">Chuck Testa</option>
+                <option value="2">Sage Cattabriga-Alosa</option>
+                <option value="3">Nikola Tesla</option>
+                <option value="4">Really Long name testing. Write whatever you want. It's your wish.</option>
+            </select>
+        </div>
+    </div>
+</div> <!-- .row, .blog-posts -->

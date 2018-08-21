@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- <div id="np-loader"></div> -->
+<div class="blog-page">
+    <!-- Header -->
+    <header class="header parallax">
+        <ul class="top-bar container">
+            <li class="home-btn"><a href="/" class="elegant-eleganticons-103"></a></li>
+            <li class="search-form">
+                <form role="search" method="get" id="search-form" action="#non">
+                    <input type="text" name="search-input" id="search-input" placeholder="Type Keyword...">
+                    <button type="submit" class="btn elegant-eleganticons-52"></button>
+                </form>
+            </li>
+        </ul>
+
+        <div class="big-title">
+            <span class="sub-title">It's a Johnny Doe</span>
+            <h1 class="title"><a href="blog.html">Blog</a></h1>
+        </div>
+    </header>
+    <!-- .header -->
+    <div class="container">
+        @RenderBody()
+    </div> <!-- .container -->
+</div> <!-- .blog-page -->
+@section Scripts {
+    <!-- custom select box init -->
+    <script>
+        $(".select-box > select").selectize({ sortField: 'text' });
+    </script>
+}

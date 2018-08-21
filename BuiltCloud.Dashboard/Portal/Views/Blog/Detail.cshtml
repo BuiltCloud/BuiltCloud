@@ -1,0 +1,254 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "_BlogLayout.cshtml";
+}
+
+<div class="blog-single blog-common row">
+    <div class="col-md-8">
+        <header class="blog-page-header">
+            <h4>Month: January 2010</h4>
+        </header>
+        <article class="hentry post type-post">
+            <header class="entry-head">
+                <h2 class="title"><a href="#non" rel="bookmark">@Model.Title</a></h2>
+                <div class="meta">
+                    <p>
+                        Posted by <span class="vcard author">@Model.Editer</span> in
+                        <span class="category">@Model.Catalog</span> on
+                        <time datetime="2014-04-28" class="pub-date">28<sup>th</sup> April 2014</time>
+                    </p>
+                </div>
+            </header>
+
+            <!-- Entry Content -->
+            <div class="entry-content">
+                <div class="content">
+                    <p class="drop-cap">Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed in elit ut mauris iaculis elementum sit amet eu nulla. Sed elementum purus ut sodales consequat. Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales.</p>
+                </div>
+                <figure class="featured-image">
+                    <img src="~/img/blog/img-2.jpg" alt="image">
+                </figure>
+                <div class="content">
+                    @Model.Content
+                </div> <!-- .content -->
+            </div> <!-- .entry-content -->
+            <footer class="entry-meta">
+                <h4 class="head">Tagged with</h4>
+                <a href="#">animation</a> <a href="#">web-design</a> <a href="#">print</a> <a href="#">wordpress</a>
+            </footer>
+        </article> <!-- .hentry post-->
+
+        <div class="blog-comments mb30">
+            <h4 class="num-comments mb15">4 Comments</h4>
+            <ul class="list-unstyled">
+                <li>
+                    <img src="~/img/clients/1.jpg" alt="image">
+                    <div class="group">
+                        <div class="commenter"><span class="name">Laura Lucia</span> - <small class="text-muted">12 April 2014 at 16:50</small></div>
+                        <p>
+                            We posses within us two minds. So far I have written only of the conscious mind. I would now like to introduce you
+                            to your second mind, the hidden and mysterious subconscious.
+                        </p>
+                        <div class="reply-text text-muted">Reply</div>
+                    </div>
+                    <!-- reply box -->
+                    <ul class="list-unstyled reply-box">
+                        <li>
+                            <img src="~/img/clients/2.jpg" alt="image">
+                            <div class="group">
+                                <div class="commenter"><span class="name">Laura Lucia - </span><small class="text-muted">12 April 2014 at 16:50</small></div>
+                                <p>We posses within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious.</p>
+                                <div class="reply-text text-muted">Reply</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- #end reply-box -->
+                </li>
+
+                <li>
+                    <img src="~/img/clients/3.jpg" alt="image">
+                    <div class="group">
+                        <div class="commenter"><span class="name">Laura Lucia - </span><small class="text-muted">12 April 2014 at 16:50</small></div>
+                        <p>We posses within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious.</p>
+                        <div class="reply-text text-muted">Reply</div>
+                    </div>
+                </li>
+            </ul>
+
+            <form id="comment-form" action="" class="comment-form mb30">
+                <h4 class="mb15 text-uppercase h5">Leave a Comment</h4>
+                <h5 class="small mb20 text-bold comment-info">Your email address will not be published. Required fields are marked with <span class="highlight-star">*</span>.</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="small text-bold text-muted">Your Name: <span class="highlight-star">*</span></label>
+                        <input type="text" class="form-control" placeholder="Johnny Doe">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="small text-bold text-muted">Email Address: <span class="highlight-star">*</span></label>
+                        <input type="email" class="form-control" placeholder="lisa@doe.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="small text-bold text-muted">Message: <span class="highlight-star">*</span></label>
+                    <textarea rows="5" class="form-control resize-v"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mb15">Submit</button>
+                <div class="comment-text-helper">
+                    <p>You may use these HTML tags and attributes:</p>
+                    <p class="tags">
+                        &lt;a&gt;, &lt;abbr&gt;, &lt;acronym title=''&gt;, &lt;b&gt;, &lt;blockquote&gt; &lt;cite&gt; &lt;strike&gt;, &lt;strong&gt;,
+                        &lt;em&gt;, &lt;q cite=''&gt;.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- blog right bar -->
+    <div class="col-md-4 blog-sidebar">
+
+        <!-- search bar -->
+        <div class="search-bar mb30">
+            <form id="blog-search" name="blog-search" action="#">
+                <input class="form-control" type="text" placeholder="Enter keywords...">
+            </form>
+        </div>
+
+        <!-- bio -->
+        <div class="about-bio side-panel">
+            <h4 class="panel-title text-uppercase">About Me</h4>
+            <img src="~/img/author.jpg" class="bio-img">
+            <p class="desc">Hello, my name is <strong>John Doe</strong>. I am a computer science student. I love blogging and coding. You can find me on twitter also. Twitter id is <a href="#na">@@doejohn</a> psum mollis purpharetra eget leo.</p>
+        </div>
+
+        <!-- arhives panel -->
+        <div class="archives side-panel">
+            <h4 class="panel-title text-uppercase">Archives</h4>
+            <ul class="list-unstyled clearfix">
+                <li>
+                    <a href="#">Dec 2014</a>
+                    <ul class="list-unstyled clearfix nested-list">
+                        <li><a href="#">Item One</a></li>
+                        <li><a href="#">Item Two</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Sep 2014</a></li>
+                <li><a href="#">Aug 2014</a></li>
+                <li><a href="#">July 2014</a></li>
+                <li><a href="#">Sep 2013</a></li>
+            </ul>
+        </div>
+
+        <!-- category panel -->
+        <div class="categories side-panel">
+            <h4 class="panel-title text-uppercase">Categories</h4>
+            <ul class="list-unstyled clearfix list-group">
+                <li>
+                    <a href="#nested100" class="list-group-item" data-toggle="collapse">
+                        <i class="elegant-eleganticons-61"></i>Creativity
+                        <span class="badge badge-round badge-xs">3</span>
+                    </a>
+                    <!-- Nested -->
+                    <ul class="list-unstyled clearfix nested-list list-group collapse in" id="nested100">
+                        <li>
+                            <a href="#" class="list-group-item">
+                                <i class="elegant-eleganticons-61"></i>Item One
+                                <span class="badge badge-round badge-xs">1</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#nested101" class="list-group-item" data-toggle="collapse">
+                                <i class="elegant-eleganticons-61"></i>Item Two
+                            </a>
+                            <!-- deep nested -->
+                            <ul class="list-unstyled clearfix nested-list list-group collapse in" id="nested101">
+                                <li>
+                                    <a href="#" class="list-group-item">
+                                        <i class="elegant-eleganticons-61"></i>Deep Nested
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Animation
+                        <span class="badge badge-round badge-xs">10</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Wordpress
+                        <span class="badge badge-round badge-xs">13</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Photoshop
+                        <span class="badge badge-round badge-xs">7</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-group-item">
+                        <i class="elegant-eleganticons-61"></i>Technology
+                        <span class="badge badge-round badge-xs">5</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Recent Posts -->
+        <div class="recent-posts side-panel">
+            <h4 class="panel-title text-uppercase">Recent Posts</h4>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="#">
+                        <img src="~/img/blog/img-1.jpg">
+                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/img/blog/img-2.jpg">
+                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/img/blog/img-3.png">
+                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- tags -->
+        <div class="tags side-panel">
+            <h4 class="panel-title text-uppercase">Tags</h4>
+            <ul class="list-unstyled clearfix">
+                <li><a href="#">PHP</a></li>
+                <li><a href="#">Nature</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">Coding</a></li>
+                <li><a href="#">Backtesting</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Responsive</a></li>
+                <li><a href="#">Latest</a></li>
+                <li><a href="#">CSS3</a></li>
+            </ul>
+        </div>
+
+        <!-- selectbox -->
+        <div class="select-box">
+            <select placeholder="Select a person..." class="">
+                <option value="">Select a person...</option>
+                <option value="1">Chuck Testa</option>
+                <option value="2">Sage Cattabriga-Alosa</option>
+                <option value="3">Nikola Tesla</option>
+                <option value="4">Really Long name testing. Write whatever you want. It's your wish.</option>
+            </select>
+        </div>
+    </div> <!-- end col -->
+</div>  <!-- .blog-single -->

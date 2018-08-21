@@ -1,0 +1,8 @@
+﻿AllowedHosts: "*"
+
+Logging:
+  LogLevel:
+    Default: Warning
+
+ConnectionStrings: 
+  BlogCloud: mongodb://192.168.1.230:27017/BlogCloud
