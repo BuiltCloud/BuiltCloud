@@ -1,0 +1,31 @@
+﻿@model Blog
+@{
+    Layout = "";
+}
+
+<form asp-controller="Blog" asp-action="Add" method="post">
+    标题:  <input asp-for="Title" /> <br />
+    目录:  <select asp-for="Catalog" asp-items="@{
+                new List<SelectListItem> {
+                    new SelectListItem { Value = ".net core", Text = ".net core" },
+                    new SelectListItem { Value = "go", Text = "go" },
+                    new SelectListItem { Value = "mongodb", Text = "mongodb"  },
+                }
+             }"></select>
+    <br />
+    作者: <input asp-for="Author" /><br />
+    编辑: <input asp-for="Editer" /><br />
+    内容: <textarea asp-for="Content"></textarea><br />
+
+    标签: <input asp-for="Tags" /><input asp-for="Tags" /><input asp-for="Tags" /><br />
+    特色:<select asp-for="Features" asp-items="@{
+                new List<SelectListItem> {
+                    new SelectListItem { Value = "精品", Text = "精品" },
+                    new SelectListItem { Value = "原创", Text = "原创" },
+                    new SelectListItem { Value = "置顶", Text = "置顶"  },
+                }
+             }"></select>
+    <br />
+    原文链接: <input asp-for="Url" /><br />
+    <button type="submit">添加</button>
+</form>

@@ -60,7 +60,7 @@ namespace BuiltCloud.Portal.Controllers
         {
             var list = _repository.Find(t =>
             (string.IsNullOrWhiteSpace(model.Tag) || t.Tags.Contains(model.Tag)) &&
-            (string.IsNullOrWhiteSpace(model.Catalog) || t.Catalog.Equals(model.Catalog, StringComparison.OrdinalIgnoreCase))
+            (string.IsNullOrWhiteSpace(model.Catalog) || t.Catalog.Equals(model.Catalog))
             , model.PageIndex, model.PageSize);
             return View(list);
         }
@@ -78,22 +78,30 @@ namespace BuiltCloud.Portal.Controllers
             return Json(list);
         }
 
-        public IActionResult Add()
+        [HttpPost]
+        public IActionResult Add2(Blog blog)
         {
-            Blog blog = new Blog
-            {
-                Catalog = ".net core",
-                Author = "Enter",
-                Content = "内容" + DateTime.Now,
-                Editer = "Enter",
-                Features = new string[] { "置顶", "原创", "精品" },
-                Tags = new string[] { "Kubernetes", "Docker", ".net core" },
-                Title = ".net core on Kubernetes.",
-                Url = "",
-                Version = 0
-            };
+            //Blog blog = new Blog
+            //{
+            //    Catalog = ".net core",
+            //    Author = "Enter",
+            //    Content = "内容" + DateTime.Now,
+            //    Editer = "Enter",
+            //    Features = new string[] { "置顶", "原创", "精品" },
+            //    Tags = new string[] { "Kubernetes", "Docker", ".net core" },
+            //    Title = ".net core on Kubernetes.",
+            //    Url = "",
+            //    Version = 0
+            //};
             _repository.Insert(blog);
             return Json(blog);
+        }
+
+        public IActionResult Add(Blog blog)
+        {
+            if (!string.IsNullOrWhiteSpace(blog.Title))
+                _repository.Insert(blog);
+            return View(blog);
         }
     }
 }

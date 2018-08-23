@@ -6,115 +6,31 @@
 <div class="blog-posts blog-common row">
     <!-- articles left bar -->
     <div class="col-md-8">
-        <!-- Post-1 -->
-        <article class="hentry post type-post sticky">
-            <header class="entry-head">
-                <h2 class="title"><a href="blog-single.html" rel="bookmark">@Model.First().Title</a></h2>
-                <div class="meta">
-                    <p>
-                        Posted by <span class="vcard author">admin</span> in
-                        <span class="category">print</span> on
-                        <time datetime="2014-04-28" class="pub-date">28<sup>th</sup> April 2014</time>
-                    </p>
+        <!-- Post-1 @@Html.Raw("<span>Hello World</span>")-->
+        @foreach (var article in Model)
+        {
+            <article class="hentry post type-post sticky">
+                <header class="entry-head">
+                    <h2 class="title"><a href="blog-single.html" rel="bookmark">@article.Title</a></h2>
+                    <div class="meta">
+                        <p>
+                            Posted by <span class="vcard author">@article.Editer</span> in
+                            <span class="category">print</span> on
+                            <time datetime="2014-04-28" class="pub-date">28<sup>th</sup> April 2014</time>
+                        </p>
+                    </div>
+                </header>
+                <div class="entry-content">
+                    <figure class="featured-image">
+                        <img src="~/img/blog/img-2.jpg" alt="image">
+                    </figure>
+                    <div class="content">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed in elit ut mauris iaculis elementum sit amet eu nulla. Sed elementum purus ut sodales consequat. Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales.</p>
+                        <a href="blog-single.html" class="more-btn">Read More</a>
+                    </div>
                 </div>
-            </header>
-            <div class="entry-content">
-                <figure class="featured-image">
-                    <img src="~/img/blog/img-2.jpg" alt="image">
-                </figure>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed in elit ut mauris iaculis elementum sit amet eu nulla. Sed elementum purus ut sodales consequat. Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales.</p>
-                    <a href="blog-single.html" class="more-btn">Read More</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Post-2 -->
-        <article class="hentry post type-post">
-            <header class="entry-head">
-                <h2 class="title"><a href="blog-single.html" rel="bookmark">Blog Post Without Images</a></h2>
-                <div class="meta">
-                    <p>
-                        Posted by <span class="vcard author">johnny</span> in
-                        <span class="category">web design</span> on
-                        <time datetime="2014-04-26" class="pub-date">26<sup>th</sup> April 2014</time>
-                    </p>
-                </div>
-            </header>
-
-            <div class="entry-content">
-                <div class="content">
-                    <p>Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales. Fugiat dapibus, tellus ac cursus commo.</p>
-                    <a href="blog-single.html" class="more-btn">Read More</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Post-3 -->
-        <article class="hentry post chat-post">
-            <header class="entry-head">
-                <h2 class="title"><a href="blog-single.html" rel="bookmark">Chat Post Format</a></h2>
-                <div class="meta">
-                    <p>
-                        Posted by <span class="vcard author">johnny</span> in
-                        <span class="category">conversation</span> on
-                        <time datetime="2014-04-24" class="pub-date">24<sup>th</sup> April 2014</time>
-                    </p>
-                </div>
-            </header>
-
-            <div class="entry-content">
-                <div class="content">
-                    <div class="chat-format">
-                        <!-- Row 1 -->
-                        <div class="chat-row">
-                            <span class="chat-author author-1">John<em>:</em></span>
-                            <p class="chat-desc">Hye, What are you doing?</p>
-                        </div>
-                        <!-- Row 2 -->
-                        <div class="chat-row">
-                            <span class="chat-author author-2">Julie<em>:</em></span>
-                            <p class="chat-desc">Nothing, just finished my wordpress design. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales. </p>
-                        </div>
-                        <!-- Row 3 -->
-                        <div class="chat-row">
-                            <span class="chat-author author-1">John<em>:</em></span>
-                            <p class="chat-desc">Ok, that's cool.</p>
-                        </div>
-                        <!-- Row 4 -->
-                        <div class="chat-row">
-                            <span class="chat-author author-3">Joe<em>:</em></span>
-                            <p class="chat-desc">Hey guys, will I join you?</p>
-                        </div>
-                    </div> <!-- .chat-format -->
-                </div>
-            </div>
-        </article>
-
-        <!-- Post 4 -->
-        <article class="hentry post video-post">
-            <header class="entry-head">
-                <h2 class="title"><a href="blog-single.html" rel="bookmark">Embed video blog post</a></h2>
-                <div class="meta">
-                    <p>
-                        Posted by <span class="vcard author">johnny</span> in
-                        <span class="category">video</span> on
-                        <time datetime="2014-04-20" class="pub-date">20<sup>th</sup> April 2014</time>
-                    </p>
-                </div>
-            </header>
-
-            <div class="entry-content">
-                <div class="featured-video">
-                    <iframe src="//player.vimeo.com/video/66929245?title=0&amp;byline=0" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="video"></iframe>
-                </div>
-                <div class="content">
-                    <p>Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales. Fugiat dapibus, tellus ac cursus commo.</p>
-                    <a href="blog-single.html" class="more-btn">Read More</a>
-                </div>
-            </div>
-        </article>
-
+            </article>
+        }
         <!-- blog pagination -->
         <div class="blog-pagination">
             <div class="prev-btn text-uppercase">
