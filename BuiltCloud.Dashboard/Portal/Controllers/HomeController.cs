@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Built.Mongo;
+using BuiltCloud.BlogModel;
+using BuiltCloud.Portal.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using BuiltCloud.Portal.Models;
 
 namespace BuiltCloud.Portal.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public HomeController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var blogRepository = _unitOfWork.GetRepository<Blog>();
+            var blogs = blogRepository.Find(t => t.Features.Contains(Feature.精品.ToString())).Take(5);
+            return View(blogs);
         }
 
         public IActionResult About()

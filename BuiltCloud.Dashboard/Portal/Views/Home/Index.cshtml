@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Blog>
+@{
     ViewData["Title"] = "Enter";
 }
 <!-- Full Front page Area -->
@@ -43,21 +44,24 @@
             <!-- Featured Posts -->
             <div class="col-wrap featured-post">
                 <div id="owl-carousel">
-                    <div class="post-1">
-                        <div class="left col-md-5 col-sm-5 col-xs-4">
-                            <img src="~/img/featured/post-1.jpg" alt="featured-post">
-                        </div>
-                        <div class="right col-md-7 col-sm-7 col-xs-8">
-                            <h3 class="head">Galaxy Note II</h3>
-                            <p class="desc">Aenean sollicitudin, lorem quis endum auctor, nisi elit consequat ipsum, nece sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit beti sei repudiandae sint et molestiae. Sed non neque elit sit amet a augue...</p>
-                            <div class="bottom">
-                                <!-- <time datetime="2014-04-20" class="pub-date">20<sup>th</sup> March 2014</time> -->
-                                <a asp-controller="Blog" asp-action="Detail" class="more-btn" title="博客">
-                                    Read More
-                                </a>
+                    @foreach (var blog in Model)
+                    {
+                        <div class="post-1">
+                            <div class="left col-md-5 col-sm-5 col-xs-4">
+                                <img src="~/img/featured/post-1.jpg" alt="featured-post">
                             </div>
-                        </div>
-                    </div><!-- End Post 1 -->
+                            <div class="right col-md-7 col-sm-7 col-xs-8">
+                                <h3 class="head">@blog.Title</h3>
+                                <p class="desc">@blog.Content</p>
+                                <div class="bottom">
+                                    <!-- <time datetime="2014-04-20" class="pub-date">20<sup>th</sup> March 2014</time> -->
+                                    <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" class="more-btn" title="博客">
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- End Post 1 -->
+                    }
 
                     <div class="post-2">
                         <div class="left col-md-5 col-sm-5 col-xs-4">

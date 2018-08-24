@@ -33,6 +33,16 @@ namespace BuiltCloud.BlogModel
         public string Editer { get; set; }
 
         /// <summary>
+        /// 图片
+        /// </summary>
+        public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Desc { get; set; }
+
+        /// <summary>
         /// 内容
         /// </summary>
         public string Content { get; set; }
@@ -56,6 +66,13 @@ namespace BuiltCloud.BlogModel
         /// 版本
         /// </summary>
         public int Version { get; set; }
+    }
+
+    public enum Feature
+    {
+        置顶,
+        原创,
+        精品
     }
 
     /*

@@ -11,12 +11,12 @@
         {
             <article class="hentry post type-post sticky">
                 <header class="entry-head">
-                    <h2 class="title"><a href="blog-single.html" rel="bookmark">@article.Title</a></h2>
+                    <h2 class="title"><a asp-controller="Blog" asp-action="Detail" asp-route-id="@article.Id" rel="bookmark">@article.Title</a></h2>
                     <div class="meta">
                         <p>
                             Posted by <span class="vcard author">@article.Editer</span> in
-                            <span class="category">print</span> on
-                            <time datetime="2014-04-28" class="pub-date">28<sup>th</sup> April 2014</time>
+                            <span class="category">@article.Catalog</span> on
+                            <time datetime="2014-04-28" class="pub-date">@article.CreatedOn</time>
                         </p>
                     </div>
                 </header>
@@ -25,8 +25,8 @@
                         <img src="~/img/blog/img-2.jpg" alt="image">
                     </figure>
                     <div class="content">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed in elit ut mauris iaculis elementum sit amet eu nulla. Sed elementum purus ut sodales consequat. Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales.</p>
-                        <a href="blog-single.html" class="more-btn">Read More</a>
+                        <p>@article.Content</p>
+                        <a asp-controller="Blog" asp-action="Detail" asp-route-id="@article.Id" class="more-btn">Read More</a>
                     </div>
                 </div>
             </article>

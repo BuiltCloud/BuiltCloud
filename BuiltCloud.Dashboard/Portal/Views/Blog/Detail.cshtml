@@ -11,12 +11,12 @@
         </header>
         <article class="hentry post type-post">
             <header class="entry-head">
-                <h2 class="title"><a href="#non" rel="bookmark">@Model.Title</a></h2>
+                <h2 class="title">@Model.Title</h2>
                 <div class="meta">
                     <p>
                         Posted by <span class="vcard author">@Model.Editer</span> in
                         <span class="category">@Model.Catalog</span> on
-                        <time datetime="2014-04-28" class="pub-date">28<sup>th</sup> April 2014</time>
+                        <time datetime="2014-04-28" class="pub-date">@Model.CreatedOn</time>
                     </p>
                 </div>
             </header>
@@ -24,7 +24,7 @@
             <!-- Entry Content -->
             <div class="entry-content">
                 <div class="content">
-                    <p class="drop-cap">Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed in elit ut mauris iaculis elementum sit amet eu nulla. Sed elementum purus ut sodales consequat. Fugiat dapibus, tellus ac cursus commo do, mauris sit condime ntum nibh, uter sitse fermentum massa justo vitaes amet r quia consequuntur magni uns. Morbi leo nulla, rhoncus sed imperdiet onec vel lacus nisi. Donec vehicula tempor sodales.</p>
+                    <p class="drop-cap">简介</p>
                 </div>
                 <figure class="featured-image">
                     <img src="~/img/blog/img-2.jpg" alt="image">
@@ -33,10 +33,16 @@
                     @Model.Content
                 </div> <!-- .content -->
             </div> <!-- .entry-content -->
-            <footer class="entry-meta">
-                <h4 class="head">Tagged with</h4>
-                <a href="#">animation</a> <a href="#">web-design</a> <a href="#">print</a> <a href="#">wordpress</a>
-            </footer>
+            @if (Model.Tags != null && Model.Tags.Any())
+            {
+                <footer class="entry-meta">
+                    <h4 class="head">Tagged with</h4>
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <a asp-controller="Blog" asp-action="Index" asp-route-tag="@tag">@tag</a>
+                    }
+                </footer>
+            }
         </article> <!-- .hentry post-->
 
         <div class="blog-comments mb30">

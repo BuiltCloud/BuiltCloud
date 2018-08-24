@@ -31,8 +31,12 @@ namespace BuiltCloud.Portal
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddBuilt(options =>
+            {
+                options.UseMongodb(Configuration.GetConnectionString("BlogCloud"));
+                options.DotUseTransaction = true;
+            });
+            services.AddRouting(options => options.LowercaseUrls = true);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
