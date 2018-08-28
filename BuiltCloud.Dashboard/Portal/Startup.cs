@@ -34,7 +34,7 @@ namespace BuiltCloud.Portal
             services.AddBuilt(options =>
             {
                 options.UseMongodb(Configuration.GetConnectionString("BlogCloud"));
-                options.DotUseTransaction = true;
+                options.DotUseTransaction = false;
             });
             services.AddRouting(options => options.LowercaseUrls = true);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

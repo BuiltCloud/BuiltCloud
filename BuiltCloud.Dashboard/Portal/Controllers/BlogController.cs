@@ -8,6 +8,8 @@ using BuiltCloud.Portal.Models;
 using BuiltCloud.BlogModel;
 using Built.Mongo;
 using System.Linq.Expressions;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace BuiltCloud.Portal.Controllers
 {
@@ -40,11 +42,11 @@ namespace BuiltCloud.Portal.Controllers
 
     public class BlogController : Controller
     {
-        private readonly IRepository<Blog> _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public BlogController(IRepository<Blog> repository)
+        public BlogController(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         [Route("blogs")]
@@ -58,6 +60,7 @@ namespace BuiltCloud.Portal.Controllers
         [Route("blogs/catalog/{Catalog}/{PageIndex:int}/{PageSize:int}")]
         public IActionResult Index(bModel model)
         {
+            var _repository = _unitOfWork.GetRepository<Blog>();
             var list = _repository.Find(t =>
             (string.IsNullOrWhiteSpace(model.Tag) || t.Tags.Contains(model.Tag)) &&
             (string.IsNullOrWhiteSpace(model.Catalog) || t.Catalog.Equals(model.Catalog))
@@ -67,13 +70,14 @@ namespace BuiltCloud.Portal.Controllers
 
         public IActionResult Detail(string id)
         {
-            ViewData["Message"] = "Your application description page.";
+            var _repository = _unitOfWork.GetRepository<Blog>();
             var blog = _repository.Get(id);
             return View(blog);
         }
 
         public IActionResult List()
         {
+            var _repository = _unitOfWork.GetRepository<Blog>();
             var list = _repository.Find(t => t.Tags.Contains("Docker"));
             return Json(list);
         }
@@ -93,14 +97,34 @@ namespace BuiltCloud.Portal.Controllers
             //    Url = "",
             //    Version = 0
             //};
+            var _repository = _unitOfWork.GetRepository<Blog>();
             _repository.Insert(blog);
             return Json(blog);
         }
 
         public IActionResult Add(Blog blog)
         {
-            if (!string.IsNullOrWhiteSpace(blog.Title))
+            if (!string.IsNullOrWhiteSpace(blog.Title) && !string.IsNullOrWhiteSpace(blog.Catalog))
+            {
+                var _repository = _unitOfWork.GetRepository<Blog>();
                 _repository.Insert(blog);
+
+                var catalogRepo = _unitOfWork.GetRepository<Catalog>();
+                /*
+                 FilterDefinition<BsonDocument> filter = "{ x: 1 }";
+                // or
+                FilterDefinition<BsonDocument> filter = new BsonDocument("x", 1);
+                 */
+
+                var result = catalogRepo.Collection.UpdateMany(new BsonDocument("Name", blog.Catalog), catalogRepo.Updater.Inc(t => t.Added, 1), new UpdateOptions
+                {
+                    IsUpsert = true
+                });
+                // db.test.update({y:999}, {$inc: { money: 10} })
+                //db.test.update({y:100},{y:999},true)
+                //db.test.update({y:1}, {$inc: { money: 10} },true)
+            }
+
             return View(blog);
         }
     }

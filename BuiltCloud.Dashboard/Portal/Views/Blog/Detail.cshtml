@@ -16,7 +16,7 @@
                     <p>
                         Posted by <span class="vcard author">@Model.Editer</span> in
                         <span class="category">@Model.Catalog</span> on
-                        <time datetime="2014-04-28" class="pub-date">@Model.CreatedOn</time>
+                        <time datetime="2014-04-28" class="pub-date">@Model.CreatedOn.ToLocalString()</time>
                     </p>
                 </div>
             </header>
@@ -24,10 +24,10 @@
             <!-- Entry Content -->
             <div class="entry-content">
                 <div class="content">
-                    <p class="drop-cap">简介</p>
+                    <p class="drop-cap">@Model.Desc</p>
                 </div>
                 <figure class="featured-image">
-                    <img src="~/img/blog/img-2.jpg" alt="image">
+                    <img src="@Model.ImageUrl" alt="image">
                 </figure>
                 <div class="content">
                     @Model.Content

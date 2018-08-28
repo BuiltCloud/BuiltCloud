@@ -75,6 +75,58 @@ namespace BuiltCloud.BlogModel
         精品
     }
 
+    /// <summary>
+    /// Tag
+    /// </summary>
+    public class Tag : Entity
+    {
+        /// <summary>
+        /// tagName
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 添加inc
+        /// </summary>
+        public long Added { get; set; }
+
+        /// <summary>
+        /// 更新inc
+        /// </summary>
+        public long Updated { get; set; }
+
+        /// <summary>
+        /// 删除inc
+        /// </summary>
+        public long Deleted { get; set; }
+    }
+
+    /// <summary>
+    /// Catalog
+    /// </summary>
+    public class Catalog : Entity
+    {
+        /// <summary>
+        /// CatalogName
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 添加inc
+        /// </summary>
+        public long Added { get; set; }
+
+        /// <summary>
+        /// 更新inc
+        /// </summary>
+        public long Updated { get; set; }
+
+        /// <summary>
+        /// 删除inc
+        /// </summary>
+        public long Deleted { get; set; }
+    }
+
     /*
      博客表
      标题

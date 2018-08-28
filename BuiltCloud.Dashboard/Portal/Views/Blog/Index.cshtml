@@ -16,16 +16,16 @@
                         <p>
                             Posted by <span class="vcard author">@article.Editer</span> in
                             <span class="category">@article.Catalog</span> on
-                            <time datetime="2014-04-28" class="pub-date">@article.CreatedOn</time>
+                            <time datetime="2014-04-28" class="pub-date">@article.CreatedOn.ToLocalString()</time>
                         </p>
                     </div>
                 </header>
                 <div class="entry-content">
                     <figure class="featured-image">
-                        <img src="~/img/blog/img-2.jpg" alt="image">
+                        <img src="@article.ImageUrl" alt="image">
                     </figure>
                     <div class="content">
-                        <p>@article.Content</p>
+                        <p>@article.Desc</p>
                         <a asp-controller="Blog" asp-action="Detail" asp-route-id="@article.Id" class="more-btn">Read More</a>
                     </div>
                 </div>
