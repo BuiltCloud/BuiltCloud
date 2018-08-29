@@ -78,7 +78,7 @@ namespace BuiltCloud.BlogModel
     /// <summary>
     /// Tag
     /// </summary>
-    public class Tag : Entity
+    public class BlogTag : Entity
     {
         /// <summary>
         /// tagName

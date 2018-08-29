@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuiltCloud.Dashboard", "Das
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuiltCloud.Portal", "Portal\BuiltCloud.Portal.csproj", "{9093613B-11FF-4E39-AD08-29078B992C10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuiltCloud.BlogModel", "Model\BuiltCloud.BlogModel.csproj", "{C1B6BB0E-E867-403F-BDAA-CAF36A766D3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuiltCloud.BlogModel", "Model\BuiltCloud.BlogModel.csproj", "{C1B6BB0E-E867-403F-BDAA-CAF36A766D3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuiltCloud.RazorPortal", "BuiltCloud.RazorPortal\BuiltCloud.RazorPortal.csproj", "{FC50EB6D-8B69-42B4-B724-AE89E8D46640}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{C1B6BB0E-E867-403F-BDAA-CAF36A766D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1B6BB0E-E867-403F-BDAA-CAF36A766D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1B6BB0E-E867-403F-BDAA-CAF36A766D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC50EB6D-8B69-42B4-B724-AE89E8D46640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC50EB6D-8B69-42B4-B724-AE89E8D46640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC50EB6D-8B69-42B4-B724-AE89E8D46640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC50EB6D-8B69-42B4-B724-AE89E8D46640}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

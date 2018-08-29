@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Blog>
+@if (Model != null && Model.Any())
+{
+    <!-- Recent Posts -->
+    <div class="recent-posts side-panel">
+        <h4 class="panel-title text-uppercase">Recent Posts</h4>
+        <ul class="list-unstyled">
+            @foreach (var blog in Model)
+            {
+                <li>
+                    <a asp-controller="Blog" asp-action="Index" asp-route-id="@blog.Id" class="list-group-item">
+                        <img src="@blog.ImageUrl">
+                        <p>@blog.Desc</p>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}

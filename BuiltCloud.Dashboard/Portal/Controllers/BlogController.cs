@@ -49,6 +49,12 @@ namespace BuiltCloud.Portal.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        public PartialViewResult RecentPosts(int count = 5)
+        {
+            var blogRepo = _unitOfWork.GetRepository<Blog>();
+            return PartialView("RecentPosts", blogRepo.FindAll(t => t.CreatedOn, 0, count, true));
+        }
+
         [Route("blogs")]
         [Route("blogs/{PageIndex:int}")]
         [Route("blogs/{PageIndex:int}/{PageSize:int}")]
@@ -60,11 +66,14 @@ namespace BuiltCloud.Portal.Controllers
         [Route("blogs/catalog/{Catalog}/{PageIndex:int}/{PageSize:int}")]
         public IActionResult Index(bModel model)
         {
-            var _repository = _unitOfWork.GetRepository<Blog>();
-            var list = _repository.Find(t =>
+            var blogRepo = _unitOfWork.GetRepository<Blog>();
+            var list = blogRepo.Find(t =>
             (string.IsNullOrWhiteSpace(model.Tag) || t.Tags.Contains(model.Tag)) &&
             (string.IsNullOrWhiteSpace(model.Catalog) || t.Catalog.Equals(model.Catalog))
             , model.PageIndex, model.PageSize);
+
+            ViewData["Catalogs"] = _unitOfWork.GetRepository<Catalog>().FindAll();
+            ViewData["Tags"] = _unitOfWork.GetRepository<BlogTag>().FindAll(0, 10);
             return View(list);
         }
 
@@ -77,8 +86,8 @@ namespace BuiltCloud.Portal.Controllers
 
         public IActionResult List()
         {
-            var _repository = _unitOfWork.GetRepository<Blog>();
-            var list = _repository.Find(t => t.Tags.Contains("Docker"));
+            var blogRepo = _unitOfWork.GetRepository<Blog>();
+            var list = blogRepo.Find(t => t.Tags.Contains("Docker"));
             return Json(list);
         }
 
@@ -106,23 +115,30 @@ namespace BuiltCloud.Portal.Controllers
         {
             if (!string.IsNullOrWhiteSpace(blog.Title) && !string.IsNullOrWhiteSpace(blog.Catalog))
             {
-                var _repository = _unitOfWork.GetRepository<Blog>();
-                _repository.Insert(blog);
+                var blogRepo = _unitOfWork.GetRepository<Blog>();
+                blogRepo.Insert(blog);
 
-                var catalogRepo = _unitOfWork.GetRepository<Catalog>();
                 /*
                  FilterDefinition<BsonDocument> filter = "{ x: 1 }";
                 // or
                 FilterDefinition<BsonDocument> filter = new BsonDocument("x", 1);
+                 // db.test.update({y:999}, {$inc: { money: 10} })
+                //db.test.update({y:100},{y:999},true)
+                //db.test.update({y:1}, {$inc: { money: 10} },true)
                  */
-
-                var result = catalogRepo.Collection.UpdateMany(new BsonDocument("Name", blog.Catalog), catalogRepo.Updater.Inc(t => t.Added, 1), new UpdateOptions
+                var catalogRepo = _unitOfWork.GetRepository<Catalog>();
+                var result = catalogRepo.Collection.UpdateMany(catalogRepo.Filter.Eq(t => t.Name, blog.Catalog), catalogRepo.Updater.Inc(t => t.Added, 1), new UpdateOptions
                 {
                     IsUpsert = true
                 });
-                // db.test.update({y:999}, {$inc: { money: 10} })
-                //db.test.update({y:100},{y:999},true)
-                //db.test.update({y:1}, {$inc: { money: 10} },true)
+                var tagRepo = _unitOfWork.GetRepository<BlogTag>();
+                foreach (var tag in blog.Tags)
+                {
+                    result = tagRepo.Collection.UpdateMany(tagRepo.Filter.Eq(t => t.Name, tag), tagRepo.Updater.Inc(t => t.Added, 1), new UpdateOptions
+                    {
+                        IsUpsert = true
+                    });
+                }
             }
 
             return View(blog);

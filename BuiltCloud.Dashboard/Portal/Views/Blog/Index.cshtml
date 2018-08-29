@@ -85,66 +85,7 @@
                 <li><a href="#">Sep 2013</a></li>
             </ul>
         </div>
-
-        <!-- category panel -->
-        <div class="categories side-panel">
-            <h4 class="panel-title text-uppercase">Categories</h4>
-            <ul class="list-unstyled clearfix list-group">
-                <li>
-                    <a href="#nested100" class="list-group-item" data-toggle="collapse">
-                        <i class="elegant-eleganticons-61"></i>Creativity
-                        <span class="badge badge-round badge-xs">3</span>
-                    </a>
-                    <!-- Nested -->
-                    <ul class="list-unstyled clearfix nested-list list-group collapse in" id="nested100">
-                        <li>
-                            <a href="#" class="list-group-item">
-                                <i class="elegant-eleganticons-61"></i>Item One
-                                <span class="badge badge-round badge-xs">1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#nested101" class="list-group-item" data-toggle="collapse">
-                                <i class="elegant-eleganticons-61"></i>Item Two
-                            </a>
-                            <!-- deep nested -->
-                            <ul class="list-unstyled clearfix nested-list list-group collapse in" id="nested101">
-                                <li>
-                                    <a href="#" class="list-group-item">
-                                        <i class="elegant-eleganticons-61"></i>Deep Nested
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#" class="list-group-item">
-                        <i class="elegant-eleganticons-61"></i>Animation
-                        <span class="badge badge-round badge-xs">10</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="list-group-item">
-                        <i class="elegant-eleganticons-61"></i>Wordpress
-                        <span class="badge badge-round badge-xs">13</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="list-group-item">
-                        <i class="elegant-eleganticons-61"></i>Photoshop
-                        <span class="badge badge-round badge-xs">7</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="list-group-item">
-                        <i class="elegant-eleganticons-61"></i>Technology
-                        <span class="badge badge-round badge-xs">5</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        @{ await Html.RenderPartialAsync("Catalog", ViewData["Catalogs"]); }
 
         <!-- Recent Posts -->
         <div class="recent-posts side-panel">
@@ -170,23 +111,7 @@
                 </li>
             </ul>
         </div>
-
-        <!-- tags -->
-        <div class="tags side-panel">
-            <h4 class="panel-title text-uppercase">Tags</h4>
-            <ul class="list-unstyled clearfix">
-                <li><a href="#">PHP</a></li>
-                <li><a href="#">Nature</a></li>
-                <li><a href="#">JavaScript</a></li>
-                <li><a href="#">Coding</a></li>
-                <li><a href="#">Backtesting</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Responsive</a></li>
-                <li><a href="#">Latest</a></li>
-                <li><a href="#">CSS3</a></li>
-            </ul>
-        </div>
-
+        @{ await Html.RenderPartialAsync("Tag", ViewData["Tags"]); }
         <!-- selectbox -->
         <div class="select-box">
             <select placeholder="Select a person..." class="">

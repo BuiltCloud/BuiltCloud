@@ -1,0 +1,14 @@
+﻿@model IEnumerable<BlogTag>
+@if (Model != null && Model.Any())
+{
+    <!-- tags -->
+    <div class="tags side-panel">
+        <h4 class="panel-title text-uppercase">Tags</h4>
+        <ul class="list-unstyled clearfix">
+            @foreach (var tag in Model)
+            {
+                <li><a asp-controller="Blog" asp-action="Index" asp-route-tag="@tag.Name">@tag.Name</a></li>
+            }
+        </ul>
+    </div>
+}
