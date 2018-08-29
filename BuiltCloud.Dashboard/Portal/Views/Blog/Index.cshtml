@@ -87,30 +87,8 @@
         </div>
         @{ await Html.RenderPartialAsync("Catalog", ViewData["Catalogs"]); }
 
-        <!-- Recent Posts -->
-        <div class="recent-posts side-panel">
-            <h4 class="panel-title text-uppercase">Recent Posts</h4>
-            <ul class="list-unstyled">
-                <li>
-                    <a href="#">
-                        <img src="~/img/blog/img-1.jpg">
-                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="~/img/blog/img-2.jpg">
-                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="~/img/blog/img-3.png">
-                        <p>Lorem ipsum dolar sit amet consector adipising.</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        @await Component.InvokeAsync("RecentPosts", new { count = 5 })
+
         @{ await Html.RenderPartialAsync("Tag", ViewData["Tags"]); }
         <!-- selectbox -->
         <div class="select-box">

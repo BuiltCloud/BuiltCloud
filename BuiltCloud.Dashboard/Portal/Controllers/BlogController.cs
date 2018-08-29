@@ -49,12 +49,6 @@ namespace BuiltCloud.Portal.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public PartialViewResult RecentPosts(int count = 5)
-        {
-            var blogRepo = _unitOfWork.GetRepository<Blog>();
-            return PartialView("RecentPosts", blogRepo.FindAll(t => t.CreatedOn, 0, count, true));
-        }
-
         [Route("blogs")]
         [Route("blogs/{PageIndex:int}")]
         [Route("blogs/{PageIndex:int}/{PageSize:int}")]
