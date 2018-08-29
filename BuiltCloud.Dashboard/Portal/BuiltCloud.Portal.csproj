@@ -15,7 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Blog\Components\RecentPosts\RecentPosts.cshtml">
+    <Content Update="Views\Blog\Components\BlogSidebar\RecentPosts.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Blog\Sidebar.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Blog\Detail.cshtml">
@@ -24,10 +27,10 @@
     <Content Update="Views\Blog\Add.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Blog\Catalog.cshtml">
+    <Content Update="Views\Blog\Components\BlogSidebar\Catalogs.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Blog\Tag.cshtml">
+    <Content Update="Views\Blog\Components\BlogSidebar\Tags.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Blog\Index.cshtml">

@@ -1,0 +1,50 @@
+﻿  <!-- blog right bar -->
+<div class="col-md-4 blog-sidebar">
+
+    <!-- search bar -->
+    <div class="search-bar mb30">
+        <form id="blog-search" name="blog-search" action="#">
+            <input class="form-control" type="text" placeholder="Enter keywords...">
+        </form>
+    </div>
+
+    <!-- bio -->
+    <div class="about-bio side-panel">
+        <h4 class="panel-title text-uppercase">About Me</h4>
+        <img src="~/img/author.jpg" class="bio-img">
+        <p class="desc">Hello, my name is <strong>John Doe</strong>. I am a computer science student. I love blogging and coding. You can find me on twitter also. Twitter id is <a href="#na">@@doejohn</a> psum mollis purpharetra eget leo.</p>
+    </div>
+
+    <!-- arhives panel -->
+    <div class="archives side-panel">
+        <h4 class="panel-title text-uppercase">Archives</h4>
+        <ul class="list-unstyled clearfix">
+            <li>
+                <a href="#">Dec 2014</a>
+                <ul class="list-unstyled clearfix nested-list">
+                    <li><a href="#">Item One</a></li>
+                    <li><a href="#">Item Two</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Sep 2014</a></li>
+            <li><a href="#">Aug 2014</a></li>
+            <li><a href="#">July 2014</a></li>
+            <li><a href="#">Sep 2013</a></li>
+        </ul>
+    </div>
+
+    @await Component.InvokeAsync("BlogSidebar", new { name = "Catalogs", count = 20 })
+    @await Component.InvokeAsync("BlogSidebar", new { name = "RecentPosts", count = 5 })
+    @await Component.InvokeAsync("BlogSidebar", new { name = "Tags", count = 10 })
+
+    <!-- selectbox -->
+    <div class="select-box">
+        <select placeholder="Select a person..." class="">
+            <option value="">Select a person...</option>
+            <option value="1">Chuck Testa</option>
+            <option value="2">Sage Cattabriga-Alosa</option>
+            <option value="3">Nikola Tesla</option>
+            <option value="4">Really Long name testing. Write whatever you want. It's your wish.</option>
+        </select>
+    </div>
+</div> <!-- end col -->

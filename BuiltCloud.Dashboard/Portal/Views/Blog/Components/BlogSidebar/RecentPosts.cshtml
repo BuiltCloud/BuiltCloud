@@ -10,6 +10,7 @@
                 <li>
                     <a asp-controller="Blog" asp-action="Index" asp-route-id="@blog.Id" class="list-group-item">
                         <img src="@blog.ImageUrl">
+                        <h5>@blog.Title</h5>
                         <p>@blog.Desc</p>
                     </a>
                 </li>

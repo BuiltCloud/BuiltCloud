@@ -1,0 +1,53 @@
+.blog-page .blog-common .fine {
+    border-color: #eaeaea;
+    border-width: 1px;
+    position: relative;
+    border-left: 2px solid #919191;
+}
+
+    .blog-page .blog-common .fine:before {
+        content: "High-quality";
+        position: absolute;
+        padding: 5px 15px;
+        top: -4px;
+        right: 0;
+        background: #c90311;
+        border-radius: 0 0 2px 2px;
+        color: #fff;
+    }
+
+.blog-page .blog-common .top {
+    border-color: #eaeaea;
+    border-width: 1px;
+    position: relative;
+    border-left: 2px solid #919191;
+}
+
+    .blog-page .blog-common .top:before {
+        content: "Top";
+        position: absolute;
+        padding: 5px 15px;
+        top: -4px;
+        right: 0;
+        background: #c90311;
+        border-radius: 0 0 2px 2px;
+        color: #fff;
+    }
+
+.blog-page .blog-common .original {
+    border-color: #eaeaea;
+    border-width: 1px;
+    position: relative;
+    border-left: 2px solid #919191;
+}
+
+    .blog-page .blog-common .original:before {
+        content: "Original";
+        position: absolute;
+        padding: 5px 15px;
+        top: -4px;
+        right: 0;
+        background: #c90311;
+        border-radius: 0 0 2px 2px;
+        color: #fff;
+    }
