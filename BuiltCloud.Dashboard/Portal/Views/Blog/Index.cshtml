@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Blog>
+﻿@model PagedResultDto<Blog>
 @{
     ViewData["Title"] = "List";
     Layout = "_BlogLayout";
@@ -7,7 +7,7 @@
     <!-- articles left bar -->
     <div class="col-md-8">
         <!-- Post-1 @@Html.Raw("<span>Hello World</span>")-->
-        @foreach (var article in Model)
+        @foreach (var article in Model.Items)
         {
             <article class="hentry post type-post fine">
                 <header class="entry-head">
@@ -31,24 +31,28 @@
                 </div>
             </article>
         }
-        <!-- blog pagination -->
-        <div class="blog-pagination">
-            <div class="prev-btn text-uppercase">
-                <a href="#"><i class="elegant-eleganticons-2"></i>Older</a>
+        @if (Model.PageCount > 1)
+        {
+            <!-- blog pagination -->
+            <div class="blog-pagination">
+                <div class="prev-btn text-uppercase">
+                    <a href="#"><i class="elegant-eleganticons-2"></i>Older</a>
+                </div>
+                <!-- pagination -->
+                <ul class="pagination list-unstyled">
+                    @for (var pageIndex = 0; pageIndex < Model.PageCount; pageIndex++)
+                    {
+                        <li class="@(Model.PageIndex==pageIndex?"active":"")">
+                            <a asp-controller="Blog" asp-action="Index" asp-route-catalog="@ViewData["Catalog"]" asp-route-tag="@ViewData["Tag"]" asp-route-PageIndex="@pageIndex">@(pageIndex + 1)</a>
+                        </li>
+                    }
+                </ul>
+                <!-- #end pagination -->
+                <div class="next-btn text-uppercase">
+                    <a href="#">Newer<i class="elegant-eleganticons-3"></i></a>
+                </div>
             </div>
-            <!-- pagination -->
-            <ul class="pagination list-unstyled">
-                <li class="active"><a href="#na">1</a></li>
-                <li><a href="#na">2</a></li>
-                <li><a href="#na">3</a></li>
-                <li><a href="#na">4</a></li>
-                <li><a href="#na">5</a></li>
-            </ul>
-            <!-- #end pagination -->
-            <div class="next-btn text-uppercase">
-                <a href="#">Newer<i class="elegant-eleganticons-3"></i></a>
-            </div>
-        </div>
+        }
     </div>
 
     @{await Html.RenderPartialAsync("Sidebar");}

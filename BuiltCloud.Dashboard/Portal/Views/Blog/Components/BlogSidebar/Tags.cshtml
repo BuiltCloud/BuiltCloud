@@ -8,7 +8,7 @@
         <ul class="list-unstyled clearfix">
             @foreach (var tag in Model)
             {
-                <li><a asp-controller="Blog" asp-action="Index" asp-route-tag="@tag.Name">@tag.Name</a></li>
+                <li><a asp-controller="Blog" asp-action="Index" asp-route-catalog="@ViewData["Catalog"]" asp-route-tag="@tag.Name">@tag.Name</a></li>
             }
         </ul>
     </div>

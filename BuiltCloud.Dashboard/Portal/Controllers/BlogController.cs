@@ -33,7 +33,7 @@ namespace BuiltCloud.Portal.Controllers
     {
         public int PageIndex { get; set; }
 
-        public int PageSize { get; set; } = 10;
+        public int PageSize { get; set; } = 2;
 
         public string Tag { get; set; }
 
@@ -50,25 +50,20 @@ namespace BuiltCloud.Portal.Controllers
         }
 
         [Route("blogs")]
-        [Route("blogs/{PageIndex:int}")]
-        [Route("blogs/{PageIndex:int}/{PageSize:int}")]
-        [Route("blogs/tag/{Tag}")]
-        [Route("blogs/tag/{Tag}/{PageIndex:int}")]
-        [Route("blogs/tag/{Tag}/{PageIndex:int}/{PageSize:int}")]
-        [Route("blogs/catalog/{Catalog}")]
-        [Route("blogs/catalog/{Catalog}/{PageIndex:int}")]
-        [Route("blogs/catalog/{Catalog}/{PageIndex:int}/{PageSize:int}")]
+        [Route("tag/{Tag}")]
+        [Route("catalog/{Catalog}")]
+        //[Route("ct/{Catalog}/{Tag}")]
+        //[Route("ct/{Catalog}/{Tag}/{PageIndex:int}")]
+        //[Route("ct/{Catalog}/{Tag}/{PageIndex:int}/{PageSize:int}")]
         public IActionResult Index(bModel model)
         {
             var blogRepo = _unitOfWork.GetRepository<Blog>();
-            var list = blogRepo.Find(t =>
-            (string.IsNullOrWhiteSpace(model.Tag) || t.Tags.Contains(model.Tag)) &&
-            (string.IsNullOrWhiteSpace(model.Catalog) || t.Catalog.Equals(model.Catalog))
-            , model.PageIndex, model.PageSize);
-
-            ViewData["Catalogs"] = _unitOfWork.GetRepository<Catalog>().FindAll();
-            ViewData["Tags"] = _unitOfWork.GetRepository<BlogTag>().FindAll(0, 10);
-            return View(list);
+            var pagedResult = (PagedResultDto<Blog>)blogRepo.FindByPaged(model.PageIndex, model.PageSize, t =>
+             (string.IsNullOrWhiteSpace(model.Tag) || t.Tags.Contains(model.Tag)) &&
+             (string.IsNullOrWhiteSpace(model.Catalog) || t.Catalog.Equals(model.Catalog)), t => t.CreatedOn, true);
+            ViewData["Catalog"] = model.Catalog;
+            ViewData["Tag"] = model.Tag;
+            return View(pagedResult);
         }
 
         public IActionResult Detail(string id)
@@ -76,13 +71,6 @@ namespace BuiltCloud.Portal.Controllers
             var _repository = _unitOfWork.GetRepository<Blog>();
             var blog = _repository.Get(id);
             return View(blog);
-        }
-
-        public IActionResult List()
-        {
-            var blogRepo = _unitOfWork.GetRepository<Blog>();
-            var list = blogRepo.Find(t => t.Tags.Contains("Docker"));
-            return Json(list);
         }
 
         [HttpPost]
